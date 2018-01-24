@@ -2688,9 +2688,11 @@ def load_appliances_from_config(config):
         # old-style setup
         warnings.warn(
             'Your conf.env has old-style base_url', category=DeprecationWarning, stacklevel=2)
+        search_keys = IPAppliance.CONFIG_MAPPING.keys()
+        search_keys.append('base_url')
         appliances = [{
             k: config[k]
-            for k in IPAppliance.CONFIG_MAPPING.keys()
+            for k in search_keys
             if k in config}]
         global_kwargs = {}
     else:
