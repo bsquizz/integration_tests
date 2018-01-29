@@ -95,7 +95,7 @@ def generated_request(appliance,
     provision_request = appliance.collections.requests.instantiate(cells=request_cells)
     yield provision_request
 
-    browser().get(store.base_url)
+    browser().get(store.current_appliance.url)
     appliance.server.login_admin()
 
     provision_request.remove_request()
@@ -108,7 +108,7 @@ def test_services_request_direct_url(appliance, generated_request):
     selenium = widgetastic.selenium
     assert navigate_to(generated_request, 'Details'), "could not find the request!"
     request_url = selenium.current_url
-    selenium.get(store.base_url)    # I need to flip it with something different here
+    selenium.get(store.current_appliance.url)    # I need to flip it with something different here
     selenium.get(request_url)        # Ok, direct access now.
     wait_for(
         lambda: widgetastic.is_displayed("//body[contains(@onload, 'miqOnLoad')]"),
