@@ -108,6 +108,8 @@ def test_services_request_direct_url(appliance, generated_request):
     selenium = widgetastic.selenium
     assert navigate_to(generated_request, 'Details'), "could not find the request!"
     request_url = selenium.current_url
+    print "REQUEST URL: %s" % request_url
+    print "CURRENT APPLIANCE URL: %s" % selenium.current_url
     selenium.get(store.current_appliance.url)    # I need to flip it with something different here
     selenium.get(request_url)        # Ok, direct access now.
     wait_for(
