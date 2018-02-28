@@ -75,7 +75,7 @@ def verify_action_result(rest_api, assert_success=True):
 
 
 @pytest.mark.rhv2
-def test_stop_vm_rest(appliance, vm_obj, verify_vm_running, soft_assert, from_detail):
+def test_stop_vm_rest(appliance, vm_obj, ensure_vm_running, soft_assert, from_detail):
     """Test stop of vm
 
     Prerequisities:
@@ -106,7 +106,7 @@ def test_stop_vm_rest(appliance, vm_obj, verify_vm_running, soft_assert, from_de
 
 
 @pytest.mark.rhv2
-def test_start_vm_rest(appliance, vm_obj, verify_vm_stopped, soft_assert, from_detail):
+def test_start_vm_rest(appliance, vm_obj, ensure_vm_stopped, soft_assert, from_detail):
     """Test start vm
 
     Prerequisities:
@@ -137,7 +137,7 @@ def test_start_vm_rest(appliance, vm_obj, verify_vm_stopped, soft_assert, from_d
 
 
 @pytest.mark.rhv2
-def test_suspend_vm_rest(appliance, vm_obj, verify_vm_running, soft_assert, from_detail):
+def test_suspend_vm_rest(appliance, vm_obj, ensure_vm_running, soft_assert, from_detail):
     """Test suspend vm
 
     Prerequisities:
@@ -174,7 +174,7 @@ def test_suspend_vm_rest(appliance, vm_obj, verify_vm_running, soft_assert, from
 
 @pytest.mark.uncollectif(lambda provider: provider.one_of(RHEVMProvider),
                          reason='Not supported for RHV provider')
-def test_reset_vm_rest(vm_obj, verify_vm_running, from_detail, appliance):
+def test_reset_vm_rest(vm_obj, ensure_vm_running, from_detail, appliance):
     """
     Test reset vm
 
