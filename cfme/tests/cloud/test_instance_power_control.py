@@ -228,7 +228,6 @@ def test_quadicon_terminate(appliance, provider, testing_instance, ensure_vm_run
                                                                 timeout=1200))
 
 
-@pytest.mark.uncollectif(lambda provider: not provider.one_of(AzureProvider, OpenStackProvider))
 def test_stop(appliance, provider, testing_instance, ensure_vm_running, soft_assert):
     """ Tests instance stop
 
@@ -392,7 +391,6 @@ def test_unpause(appliance, provider, testing_instance, ensure_vm_paused, soft_a
     wait_for_instance_state(soft_assert, provider, testing_instance, state="started")
 
 
-
 @pytest.mark.uncollectif(lambda provider: not provider.one_of(AzureProvider, OpenStackProvider))
 def test_resume(appliance, provider, testing_instance, ensure_vm_suspended, soft_assert):
     """ Tests instance resume
@@ -465,7 +463,6 @@ class TestInstanceRESTAPI(object):
             assert success
         return success, message
 
-    @pytest.mark.uncollectif(lambda provider: not provider.one_of(AzureProvider, OpenStackProvider))
     @pytest.mark.parametrize("from_detail", [True, False], ids=["from_detail", "from_collection"])
     def test_stop(self, provider, testing_instance, ensure_vm_running,
             soft_assert, appliance, from_detail):
