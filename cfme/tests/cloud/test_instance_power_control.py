@@ -17,7 +17,7 @@ pytestmark = [
     pytest.mark.tier(2),
     pytest.mark.long_running,
     test_requirements.power,
-    pytest.mark.provider([CloudProvider], scope='module', required_fields=['test_power_control']),
+    pytest.mark.provider([CloudProvider], scope='function', required_fields=['test_power_control']),
     pytest.mark.usefixtures('setup_provider'),
 ]
 
